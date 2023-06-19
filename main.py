@@ -1,5 +1,12 @@
 """
 This script demonstrates how to access and utilize data from various NIH databases.
+
+TODO:
+- Add more functions to demonstrate accessing other NIH databases.
+- Implement data analysis and visualization using the fetched data.
+
+Author: Kevin Mastascusa
+Date: 6/19/2023
 """
 
 import GEOparse
@@ -19,15 +26,13 @@ def fetch_geo_data(geo_id: str, destdir: str = './'):
     print(f"Successfully fetched GEO dataset {geo_id} and stored it in {destdir}.")
 
 
-def search_pubmed(term: str, email: str = "kzm24@drexel.edu"):
+def search_pubmed(term: str):
     """
     Search for a term in the PubMed database.
 
     :param term: The search term.
-    :param email: The email to use with the Entrez API.
-    Replace with your actual email when using the program.
     """
-    Entrez.email = email
+    Entrez.email = "your.email@example.com"  # Replace with your actual email
     handle = Entrez.esearch(db="pubmed", term=term)
     record = Entrez.read(handle)
     handle.close()
